@@ -7,7 +7,8 @@ export default {
             message: null,
             hideShow: false,
             showModelComponent: false,
-            theme: 'sale'
+            theme: 'sale',
+            applyTheme:true
         }
     },
     methods: {
@@ -16,6 +17,10 @@ export default {
         },
         showModel() {
             this.showModelComponent = !this.showModelComponent;
+        },
+        changeTheme(){
+        this.theme = this.theme === 'sale' ? 'normal' : 'sale'
+        this.applyTheme=!this.applyTheme
         }
     },
     components: {
@@ -30,13 +35,15 @@ export default {
       <button @click="onFocus">FOCUS</button>
       <button @click="showModel">Open Model</button>
       <Model v-if="showModelComponent" :showModel="showModel" :title="`Sign up for the Giveaway!`"
-          :content="`Grab your ninga swag for half price!`" :theme="theme">
+          :content="`Grab your ninga swag for half price!`" :theme="theme"
+          :applyTheme="applyTheme">
         <template v-slot:links >
           <div class="container">
-            <p :class="{'text-color': theme === 'sale', 'content': theme !== 'sale'}">Do It Fast!!!</p>
+            <p :class="{'text-color':applyTheme, 'content': !applyTheme}">Do It Fast!!!</p>
             <div class="buttons">
-              <button :class="{'theme-btn-color': theme === 'sale', 'btn-color': theme !== 'sale'}">Sign Up</button>
-              <button :class="{'theme-btn-color': theme === 'sale', 'btn-color': theme !== 'sale'}">Login</button>
+              <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" >Sign Up</button>
+              <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}">Login</button>
+              <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" @click="changeTheme">Change Theme</button>
             </div>
           </div>
         </template>

@@ -1,10 +1,10 @@
 <template>
     <div class="empty-container" @click="showModel()"></div>
     <div class="box" :class="{'text-bg':theme==='sale'}">
-        <h1 :class="{'text-color': theme === 'sale', 'title': theme !== 'sale'}">
+        <h1 :class="{'text-color': applyTheme, 'title': !applyTheme}">
             {{ title }}
         </h1>
-        <p :class="{'text-color': theme === 'sale'}">{{ content }}</p>
+        <p :class="{'text-color': applyTheme}">{{ content }}</p>
         <div class="modal-content">
       <slot name="links"></slot>
     </div>
@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-    props: ['showModel','title','content','theme'],
+    props: ['showModel','title','content','theme','applyTheme'],
 }
 </script>
 <style scoped>
