@@ -1,5 +1,5 @@
 <template>
-    <div class="empty-container" @click="customFunction()"></div>
+    <div class="empty-container" @click="showModel()"></div>
     <div class="box" :class="{'text-bg':theme==='sale'}">
         <h1 :class="{'text-color': theme === 'sale', 'title': theme !== 'sale'}">
             {{ title }}
@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-    props: ['customFunction','title','content','theme'],
+    props: ['showModel','title','content','theme'],
 }
 </script>
 <style scoped>

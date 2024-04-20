@@ -6,7 +6,7 @@ export default {
         return {
             message: null,
             hideShow: false,
-            showComponent: false,
+            showModelComponent: false,
             theme: 'sale'
         }
     },
@@ -14,8 +14,8 @@ export default {
         onFocus() {
             this.$refs.inputRef.focus();
         },
-        customFunction() {
-            this.showComponent = !this.showComponent;
+        showModel() {
+            this.showModelComponent = !this.showModelComponent;
         }
     },
     components: {
@@ -28,8 +28,8 @@ export default {
       <h1>Model Project</h1>
       <input type="text" placeholder="edit me" ref="inputRef" />
       <button @click="onFocus">FOCUS</button>
-      <button @click="customFunction">Open Model</button>
-      <Model v-if="showComponent" :customFunction="customFunction" :title="`Sign up for the Giveaway!`"
+      <button @click="showModel">Open Model</button>
+      <Model v-if="showModelComponent" :showModel="showModel" :title="`Sign up for the Giveaway!`"
           :content="`Grab your ninga swag for half price!`" :theme="theme">
         <template v-slot:links >
           <div class="container">
@@ -47,8 +47,7 @@ export default {
 <style scoped>
 body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+   box-sizing: border-box;
 }
 
 .main-container {
