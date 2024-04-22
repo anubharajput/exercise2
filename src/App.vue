@@ -5,7 +5,8 @@ export default {
         return {
             showModelComponent: false,
             theme: 'sale',
-            applyTheme:true
+            applyTheme:true,
+            themeTitle:'normal theme'
         }
     },
     methods: {
@@ -18,6 +19,10 @@ export default {
         changeTheme(){
             this.theme=this.theme==='sale'?this.theme='normal':this.theme='sale';
             this.applyTheme=!this.applyTheme
+            if(this.theme==='normal')
+            this.themeTitle='sale theme'
+            else
+            this.themeTitle='normal theme'
         }
     },
     components: {
@@ -31,6 +36,7 @@ export default {
       <input type="text" ref="inputRef" />
       <button @click="onFocus">FOCUS</button>
       <button @click="showModel">Open Model</button>
+      <button @click="changeTheme">{{ themeTitle }}</button>
       <Model v-if="showModelComponent" :showModel="showModel" :title="`Sign up for the Giveaway!`"
           :content="`Grab your ninga swag for half price!`" :theme="theme"
           :applyTheme="applyTheme">
@@ -40,7 +46,7 @@ export default {
             <div class="buttons">
               <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" >Sign Up</button>
               <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}">Login</button>
-              <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" @click="changeTheme" >Change Theme</button>
+              <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" @click="changeTheme" >{{ themeTitle }}</button>
             </div>
           </div>
         </template>
