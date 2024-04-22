@@ -15,6 +15,10 @@ export default {
         showModel() {
             this.showModelComponent = !this.showModelComponent;
         },
+        changeTheme(){
+            this.theme=this.theme==='sale'?this.theme='normal':this.theme='sale';
+            this.applyTheme=!this.applyTheme
+        }
     },
     components: {
         Model
@@ -24,7 +28,7 @@ export default {
 <template>
     <div class="main-container">
       <h1>Model Project</h1>
-      <input type="text" placeholder="edit me" ref="inputRef" />
+      <input type="text" ref="inputRef" />
       <button @click="onFocus">FOCUS</button>
       <button @click="showModel">Open Model</button>
       <Model v-if="showModelComponent" :showModel="showModel" :title="`Sign up for the Giveaway!`"
@@ -36,6 +40,7 @@ export default {
             <div class="buttons">
               <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" >Sign Up</button>
               <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}">Login</button>
+              <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" @click="changeTheme" >Change Theme</button>
             </div>
           </div>
         </template>
