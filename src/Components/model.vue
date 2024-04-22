@@ -1,10 +1,10 @@
 <template>
-    <div class="empty-container" @click="showModel()"></div>
-    <div class="box" :class="{'text-bg':theme==='sale'}">
-        <h1 :class="{'text-color': applyTheme, 'title': !applyTheme}">
+    <div class="backdrop-container" @click="showModel()"></div>
+    <div class="box" :class="{'theme-background':theme==='sale'}">
+        <h1 :class="{'theme-text-color': applyTheme, 'text-color': !applyTheme}">
             {{ title }}
         </h1>
-        <p :class="{'text-color': applyTheme}">{{ content }}</p>
+        <p :class="{'theme-text-color': applyTheme}">{{ content }}</p>
         <div class="modal-content">
       <slot name="links"></slot>
     </div>
@@ -31,12 +31,12 @@ export default {
     z-index: 1;
 }
 
-.box .title {
+.box .text-color {
     color: rgb(10, 212, 182);
 }
 
 
-.empty-container {
+.backdrop-container {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -44,10 +44,10 @@ export default {
     background-color: rgba(0, 0, 0, .7);
     cursor: pointer;
 }
-.text-color{
+.theme-text-color{
     color:white;
 }
-.text-bg{
+.theme-background{
     background-color: red;
 }
 

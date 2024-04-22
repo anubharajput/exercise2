@@ -1,11 +1,8 @@
 <script>
 import Model from './Components/model.vue';
 export default {
-
     data() {
         return {
-            message: null,
-            hideShow: false,
             showModelComponent: false,
             theme: 'sale',
             applyTheme:true
@@ -18,10 +15,6 @@ export default {
         showModel() {
             this.showModelComponent = !this.showModelComponent;
         },
-        changeTheme(){
-        this.theme = this.theme === 'sale' ? 'normal' : 'sale'
-        this.applyTheme=!this.applyTheme
-        }
     },
     components: {
         Model
@@ -38,12 +31,11 @@ export default {
           :content="`Grab your ninga swag for half price!`" :theme="theme"
           :applyTheme="applyTheme">
         <template v-slot:links >
-          <div class="container">
-            <p :class="{'text-color':applyTheme, 'content': !applyTheme}">Do It Fast!!!</p>
+          <div class="slot-container">
+            <p :class="{'theme-text-color':applyTheme, 'content': !applyTheme}">Do It Fast!!!</p>
             <div class="buttons">
               <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" >Sign Up</button>
               <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}">Login</button>
-              <button :class="{'theme-btn-color': applyTheme, 'btn-color': !applyTheme}" @click="changeTheme">Change Theme</button>
             </div>
           </div>
         </template>
@@ -81,41 +73,44 @@ input {
     border:none;
     border:2px solid rgb(169, 167, 167);
     border-radius: 5px;
+    cursor:pointer;
 }
 
  button:hover {
     background-color: black;
     color: white;
 }
-.container .buttons {
+.slot-container .buttons {
     display: flex;
     gap: 20px;
 }
 
-.container .btn-color {
+.slot-container .btn-color {
     color: rgb(10, 212, 182);
     border-color: rgb(10, 212, 182);
     background-color: white;
+    cursor: pointer;
 }
 
-.container .btn-color:hover {
+.slot-container .btn-color:hover {
     background-color: rgb(10, 212, 182);
     color: white;
 }
-.container .theme-btn-color {
+.slot-container .theme-btn-color {
     color:white;
     border-color:white;
     background-color: red;
+    cursor: pointer;
 }
 
-.container .theme-btn-color:hover {
+.slot-container .theme-btn-color:hover {
     background-color:white;
     color: red;
 }
-.container .text-color{
+.slot-container .theme-text-color{
     color:white
 }
-.container .content{
+.slot-container .content{
     color:black;
 }
 </style>
